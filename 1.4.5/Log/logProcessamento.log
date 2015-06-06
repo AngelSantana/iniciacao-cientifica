@@ -1,0 +1,38 @@
+
+ ========= Inicio processamento: Sun May 31 08:22:40 2015  ========================================================== 
+
+ [Sun May 31 08:22:40 2015] - Lendo arquivo 'discover.data' 
+ [Sun May 31 08:22:47 2015] - Quantidade lida:  51   
+  [Sun May 31 08:22:47 2015]  -> Tempo de execucao: 7 segundo(s) 
+
+ [Sun May 31 08:22:47 2015]- Lendo arquivo 'discover.names' 
+ [Sun May 31 09:10:11 2015] - Quantidade lida:  28421   
+  [Sun May 31 09:10:11 2015]  -> Tempo de execucao: 2844 segundo(s) 
+
+ [Sun May 31 09:10:12 2015] - Mapeando arquivo 'discover.names' 
+ [Sun May 31 15:37:16 2015] - Quantidade lida:  28421   
+  [Sun May 31 15:37:16 2015]  -> Tempo de execucao: 23224 segundo(s) 
+
+ [Sun May 31 15:37:16 2015] - Buscando sinonimos de sinonimos e associando ao hash de 'mapeamento do arquivo names' 
+ [Sun May 31 21:10:43 2015] - Quantidade lida:  3760   
+  [Sun May 31 21:10:43 2015]  -> Tempo de execucao: 20007 segundo(s) 
+
+  [Sun May 31 21:10:43 2015] - Mapeando objetos e adicionando ao hash, as informacoes do arquivo 'discover.data' 
+ [Sun May 31 22:10:20 2015] - Quantidade lida:  51   
+  [Sun May 31 22:10:20 2015]  -> Tempo de execucao: 3577 segundo(s) 
+
+ [Sun May 31 22:10:20 2015] >>>  Manipulando matriz do arquivo 'discover.data' 
+ [Sun May 31 23:09:54 2015] - Quantidade lida:  51   
+  [Sun May 31 23:09:54 2015]  -> Tempo de execucao: 3574 segundo(s) 
+
+ [Sun May 31 23:09:54 2015] >>> Removendo colunas zeradas da matriz 'discover.data' 
+ [Sun May 31 23:10:00 2015] - Quantidade lida:  51   
+  [Sun May 31 23:10:00 2015]  -> Tempo de execucao: 6 segundo(s) 
+
+ [Sun May 31 23:10:00 2015] >>> Rescrevendo em novo arquivo, as linhas do arquivo 'discover.data' 
+ [Sun May 31 23:10:05 2015] - Quantidade lida:  51   
+  [Sun May 31 23:10:05 2015]  -> Tempo de execucao: 5 segundo(s) 
+
+ 
+ ============= Fim processamento: Sun May 31 23:10:05 2015 ========================================================== 
+

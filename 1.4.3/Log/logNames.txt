@@ -1,0 +1,27 @@
+ 
+ [LOG: Tamanho do data----> 6]
+
+  [LOG: PALAVRA USADA PARA BUSCA: (bookman)] 
+ 
+ [LOG: Tamanho da NOVA lista de sinonimos: 10
+    Tamanho da ANTIGA lista de sinonimos: 6 
+
+ -------------------------------------------------------------------------------------------- 
+ 
+ [LOG: Tamanho do data----> 8]
+
+  [LOG: PALAVRA USADA PARA BUSCA: (earphone)] 
+ 
+ [LOG: Tamanho da NOVA lista de sinonimos: 12
+    Tamanho da ANTIGA lista de sinonimos: 8 
+
+ -------------------------------------------------------------------------------------------- 
+ 
+ [LOG: Tamanho do data----> 1]
+
+  [LOG: PALAVRA USADA PARA BUSCA: (university)] 
+ 
+ [LOG: Tamanho da NOVA lista de sinonimos: 1
+    Tamanho da ANTIGA lista de sinonimos: 1 
+
+ -------------------------------------------------------------------------------------------- 

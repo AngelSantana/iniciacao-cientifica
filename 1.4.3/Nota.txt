@@ -1,0 +1,3 @@
+- Problemas nesta versão:
+1. Ainda existia ',,' nas linhas, como se o replace não estivesse funcionado;
+2. A somatória neste caso tinha que ser por '0.00' e não por '0', pois no mapeamento do arquivo .data, os valores são decimais.
