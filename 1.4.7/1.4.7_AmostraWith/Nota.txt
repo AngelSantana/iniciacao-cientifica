@@ -1,0 +1,2 @@
+- Com marcação de 'REMOVER', para comparar o que foi manipulado no arquivo *.data;
+- Em names as palavras que possuem sinônimos e já com os sinônimos de sinônimos.
