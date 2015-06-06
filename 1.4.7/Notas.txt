@@ -1,1 +1,15 @@
-Alterado mínimo de sinônimos para 20.
+1. Alterado mínimo de sinônimos para 20.
+2. Problema encontrado:
+
+(Localizado na linha 3674 [ou 3673 sem a primeira linha] do arquivo .names)
+
+dark: Night | apparition | dark | darkness | duskiness | [evil] | fantasm | immorality | iniquity | loathsomeness | lousiness | nefariousness | [night] | nighttime | ox | phantasm | phantasma | phantom | repulsiveness | [shadow] | shadower | sin | sinfulness | sliminess | swarthiness | tail | tincture | trace | ugliness | vestige | vileness | wickedness | 
+          ~  [809]|evil      
+          ~  [4488]|night      
+          ~  [1340]|shadow   
+
+(Localizado na linha 54 [ou 53 sem a primeira linha] do arquivo .names)
+
+
+nighttim: Night | apparition | [dark] | darkness | duskiness | evil | fantasm | immorality | iniquity | loathsomeness | lousiness | nefariousness | night | nighttime | ox | phantasm | phantasma | phantom | repulsiveness | shadow | shadower | sin | sinfulness | sliminess | swarthiness | tail | tincture | trace | ugliness | vestige | vileness | wickedness | 
+          ~  [3673]|dark   
