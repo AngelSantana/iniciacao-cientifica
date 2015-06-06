@@ -1,0 +1,18 @@
+[01 Jun 2015 17:10:07,106] INFO  : ====== Inicio processamento: Mon Jun  1 17:10:07 2015  ===========  
+[01 Jun 2015 17:10:07,107] INFO  : Lendo arquivo 'discover.names'
+[01 Jun 2015 17:10:13,815] INFO  : -> Tempo de execucao: 6 segundo(s) 
+[01 Jun 2015 17:10:13,816] INFO  : Lendo arquivo 'discover.names'
+[01 Jun 2015 17:57:40,863] INFO  : -> Tempo de execucao: 2847 segundo(s) 
+[01 Jun 2015 17:57:40,876] INFO  : Mapeando arquivo 'discover.names'
+[02 Jun 2015 00:32:26,263] INFO  : -> Tempo de execucao: 23686 segundo(s) 
+[02 Jun 2015 00:32:26,266] INFO  : Buscando sinonimos de sinonimos e associando ao hash de 'mapeamento do arquivo names'
+[02 Jun 2015 05:21:16,142] INFO  : -> Tempo de execucao: 17330 segundo(s) 
+[02 Jun 2015 05:21:16,146] INFO  : Mapeando objetos e adicionando ao hash, as infor. do arquivo 'discover.data'
+[02 Jun 2015 05:56:55,429] INFO  : -> Tempo de execucao: 2139 segundo(s) 
+[02 Jun 2015 05:56:55,456] INFO  : >>>  Manipulando matriz do arquivo 'discover.data'
+[02 Jun 2015 06:32:30,963] INFO  : -> Tempo de execucao: 2135 segundo(s) 
+[02 Jun 2015 06:32:30,963] INFO  : >>> Removendo colunas zeradas da matriz 'discover.data'
+[02 Jun 2015 06:32:36,777] INFO  : -> Tempo de execucao: 6 segundo(s) 
+[02 Jun 2015 06:32:36,778] INFO  : >>> Rescrevendo em novo arquivo, as linhas do arquivo 'discover.data'
+[02 Jun 2015 06:32:42,299] INFO  : -> Tempo de execucao: 6 segundo(s) 
+[02 Jun 2015 06:32:42,354] INFO  : ===== Fim processamento: Tue Jun  2 06:32:42 2015  ============= 
