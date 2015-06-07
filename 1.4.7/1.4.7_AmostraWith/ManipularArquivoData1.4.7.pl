@@ -7,8 +7,8 @@ my($INDEX_NOUN, $DATA_NOUN, $DIRETORIO
    
 $INDEX_NOUN = "index.noun";
 $DATA_NOUN = "data.noun";
-#$DIRETORIO = "D:/Projetos/WordNet/WordNet/dict/";
-$DIRETORIO = "C:/WordNet/dict/";
+$DIRETORIO = "D:/Projetos/WordNet/WordNet/dict/";
+#$DIRETORIO = "C:/WordNet/dict/";
 $DISCOVER_DATA = "discover.data";
 $MEU_DISCOVER_DATA = "meuDiscover.data";
 $MEU_DISCOVER_NAMES = "meuDiscover.names";
@@ -425,7 +425,7 @@ sub identificarSinonimosDeSinonimos{
        $|=1;
        my(@discoverNames, $row, $column, $otherRow
          , $otherColumn, $palavraArquivo
-         , $encontrei, %novoHashMapeado, %copiaHashMapeado, $string, $num
+         , $encontrei, $isHerdeiro , %novoHashMapeado, %copiaHashMapeado, $string, $num
          , $palavra, $start_run, $end_run
          , $run_time, $key, $i, %hashList, $SEPARADORDADOS
          , $CINICIO, $CFIM, $SEPARADORINFOR);
@@ -439,7 +439,7 @@ sub identificarSinonimosDeSinonimos{
        $CINICIO = "[";
        $CFIM = "]";
        $SEPARADORINFOR = ";";
-          
+       $isHerdeiro = 0;   
        $logger->info("Buscando sinonimos de sinonimos e associando ao hash de 'mapeamento do arquivo names'");      
        open my $meuArquivo, ">", $MEU_DISCOVER_NAMES or die "Can't create ".$MEU_DISCOVER_NAMES."'\n"; 
        $start_run = time();   
@@ -474,23 +474,35 @@ sub identificarSinonimosDeSinonimos{
                                      # [3]|bookman;[4]|educatee; 
                                      # O valor que vai ser de interesse, será o que esta entre colchetes.
                                      $string = $string.$CINICIO.$otherRow.$CFIM.$SEPARADORDADOS.$key.$SEPARADORINFOR; 
-                                     $discoverNames[$otherRow][$otherColumn] = "";
+                                     $discoverNames[$otherRow][$otherColumn] = "";                                     
+                                     #Antes de remover o termo, a "palavra" atual vai herdar seus sinônimos de 
+                                     #sinônimos.
+                                     my $herdeiro =  $novoHashMapeado{$key}->getIndexSinonimos;
+                                     if(length($herdeiro) > 0){
+                                        $isHerdeiro  =  1;
+                                        $string = $string.$herdeiro; 
+                                     }
                                      #Remover do hash
                                      delete $novoHashMapeado{$key};
                                      last;
                                  }                                              
                            }
                           #Marco a palavra encontrada.
-                          if($encontrei){                      
-                              print $meuArquivo "[$key] | ";           
+                          if($encontrei){    
+                             if($isHerdeiro){
+                                 print $meuArquivo "[($key)] | ";           
+                             }else{
+                                 print $meuArquivo "[$key] | ";              
+                             }                              
                            }else{
                                print $meuArquivo "$key | ";  
                            }
                            $encontrei = 0;                 
+                           $isHerdeiro = 0;
                         }                   
                          $novoHashMapeado{$palavra}->setIndexSinonimos(set => $string);
                          # Serve apenas para escrever no meuDiscover.names
-                         if(length($string)){                   
+                         if(length($string) > 0){                   
                             my @array = split(";", $string);                
                             foreach (@array){ 
                               print $meuArquivo "\n          ~  $_      ";                     

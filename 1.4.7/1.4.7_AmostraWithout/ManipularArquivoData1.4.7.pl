@@ -7,8 +7,8 @@ my($INDEX_NOUN, $DATA_NOUN, $DIRETORIO
    
 $INDEX_NOUN = "index.noun";
 $DATA_NOUN = "data.noun";
-#$DIRETORIO = "D:/Projetos/WordNet/WordNet/dict/";
-$DIRETORIO = "C:/WordNet/dict/";
+$DIRETORIO = "D:/Projetos/WordNet/WordNet/dict/";
+#$DIRETORIO = "C:/WordNet/dict/";
 $DISCOVER_DATA = "discover.data";
 $MEU_DISCOVER_DATA = "meuDiscover.data";
 $MEU_DISCOVER_NAMES = "meuDiscover.names";
@@ -60,8 +60,8 @@ sub removerFlags($)
 sub extrairPalavras($){
    my($linha, $nome);
    $linha  = shift;   
-   ($nome) = $linha =~ /(([a-z]){1}\S.*\b\s(@))/ ;
-   ($linha) = $nome =~ /(([a-z]){1}\S.*.([a-z]){1}\b)/; 
+   ($nome) = $linha =~ /(([A-z]){1}\S.*\b\s(@))/ ;
+   ($linha) = $nome =~ /(([A-z]){1}\S.*.([A-z]){1}\b)/; 
                       
     return $linha;                   
 }
@@ -69,8 +69,8 @@ sub extrairPalavras($){
 sub extrairNomes{
    my($new,  $palavra);
    $new = $_[0];
-   ($palavra) = $new =~ /^(\"[a-zA-z]+\")/;
-   ($new) = $palavra =~ /([a-zA-z]+)/;
+   ($palavra) = $new =~ /^(\"[A-z]+\")/;
+   ($new) = $palavra =~ /([A-z]+)/;
    
    return ($new);
    
@@ -202,7 +202,7 @@ sub buscarSinonimos($){
                           @palavras = split(/[0-9]/, extrairPalavras($linha2)); # Obtém as palavras da linha do arquivo
                           foreach(@palavras){ # Adiciona as palavras encontradas ao hash $data
                              $w = trim($_);                           
-                             ($onlyWord) = $w =~ /(^[a-zA-z]+$)/;                          
+                             ($onlyWord) = $w =~ /(^[A-z]+$)/;                          
                             
                              if(length($onlyWord) > 1){
                                  $data{$w} = $w;    # Exemplo: key = student, value = student.                          
@@ -235,10 +235,8 @@ sub buscaRecursiva{
       return %data;
    }
    foreach $key (sort keys %data){
-        if(length(trim($key)) > 2){
-	  %retorno =  buscarSinonimos($key);
+ 	  %retorno =  buscarSinonimos($key);
           @data{keys %retorno} = values %retorno;
-      }
    }          
    $i += scalar keys %data; 
    if($i == $k or $i == 0 ){      
@@ -252,11 +250,12 @@ sub mapearArquivoNomes{
        $|=1;
        my(@discoverNames, %hashMapeamentoArqNames, %hashList, 
           $row, $column, $num, $end_run, $run_time,
-          $start_run, $palavra, $i, $informacao);
+          $start_run, $palavra, $i, $informacao, $string);
           
        @discoverNames = @_;       
        $column = 0;       
        $num = 0;
+       $string = "";
        $logger->info("Mapeando arquivo 'discover.names'");       
        $start_run = time();       
        foreach $row (0..@discoverNames-1){  
@@ -271,7 +270,8 @@ sub mapearArquivoNomes{
             print ("\b" x (length(" ->  $num - Termo: $palavra  - Quant. sinonimos: $i      ")));  
              
             if(length($palavra) > 0 and $i > 0 ){
-               $informacao = Informacao->new( string => $palavra, integer => $row);              
+               $informacao = Informacao->new( string => $palavra, integer => $row);      
+               $informacao->setIndexSinonimos(set => $string);
                $hashMapeamentoArqNames{$informacao->getTermo} = $informacao;              
             }                            
    }
@@ -425,7 +425,7 @@ sub identificarSinonimosDeSinonimos{
        $|=1;
        my(@discoverNames, $row, $column, $otherRow
          , $otherColumn, $palavraArquivo
-         , $encontrei, %novoHashMapeado, %copiaHashMapeado, $string, $num
+         , $encontrei, $isHerdeiro , %novoHashMapeado, %copiaHashMapeado, $string, $num
          , $palavra, $start_run, $end_run
          , $run_time, $key, $i, %hashList, $SEPARADORDADOS
          , $CINICIO, $CFIM, $SEPARADORINFOR);
@@ -439,7 +439,7 @@ sub identificarSinonimosDeSinonimos{
        $CINICIO = "[";
        $CFIM = "]";
        $SEPARADORINFOR = ";";
-          
+       $isHerdeiro = 0;   
        $logger->info("Buscando sinonimos de sinonimos e associando ao hash de 'mapeamento do arquivo names'");      
        open my $meuArquivo, ">", $MEU_DISCOVER_NAMES or die "Can't create ".$MEU_DISCOVER_NAMES."'\n"; 
        $start_run = time();   
@@ -474,23 +474,35 @@ sub identificarSinonimosDeSinonimos{
                                      # [3]|bookman;[4]|educatee; 
                                      # O valor que vai ser de interesse, será o que esta entre colchetes.
                                      $string = $string.$CINICIO.$otherRow.$CFIM.$SEPARADORDADOS.$key.$SEPARADORINFOR; 
-                                     $discoverNames[$otherRow][$otherColumn] = "";
+                                     $discoverNames[$otherRow][$otherColumn] = "";                                     
+                                     #Antes de remover o termo, a "palavra" atual vai herdar seus sinônimos de 
+                                     #sinônimos.
+                                     my $herdeiro =  $novoHashMapeado{$key}->getIndexSinonimos;
+                                     if(length($herdeiro) > 0){
+                                        $isHerdeiro  =  1;
+                                        $string = $string.$herdeiro; 
+                                     }
                                      #Remover do hash
                                      delete $novoHashMapeado{$key};
                                      last;
                                  }                                              
                            }
                           #Marco a palavra encontrada.
-                          if($encontrei){                      
-                              print $meuArquivo "[$key] | ";           
+                          if($encontrei){    
+                             if($isHerdeiro){
+                                 print $meuArquivo "[($key)] | ";           
+                             }else{
+                                 print $meuArquivo "[$key] | ";              
+                             }                              
                            }else{
                                print $meuArquivo "$key | ";  
                            }
                            $encontrei = 0;                 
+                           $isHerdeiro = 0;
                         }                   
                          $novoHashMapeado{$palavra}->setIndexSinonimos(set => $string);
                          # Serve apenas para escrever no meuDiscover.names
-                         if(length($string)){                   
+                         if(length($string) > 0){                   
                             my @array = split(";", $string);                
                             foreach (@array){ 
                               print $meuArquivo "\n          ~  $_      ";                     

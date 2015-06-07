@@ -668,3 +668,19 @@
 [05 Jun 2015 10:02:08,901] INFO  : -> Tempo de execucao: 5 segundo(s) 
 [05 Jun 2015 10:02:08,902] INFO  :    - Quantidade lida:  51   
 [05 Jun 2015 10:02:08,945] INFO  : ===== Fim processamento: Fri Jun  5 10:02:08 2015  ============= 
+[07 Jun 2015 01:42:26,605] INFO  : ====== Inicio processamento: Sun Jun  7 01:42:26 2015  ===========  
+[07 Jun 2015 01:42:26,630] INFO  : Lendo arquivo 'discover.names'
+[07 Jun 2015 01:42:32,338] INFO  : -> Tempo de execucao: 6 segundo(s) 
+[07 Jun 2015 01:42:32,338] INFO  :    - Quantidade lida:  51   
+[07 Jun 2015 01:42:32,339] INFO  : Lendo arquivo 'discover.names'
+[07 Jun 2015 02:30:24,886] INFO  : -> Tempo de execucao: 2872 segundo(s) 
+[07 Jun 2015 02:30:24,887] INFO  :    - Quantidade lida:  28421   
+[07 Jun 2015 02:30:24,893] INFO  : Mapeando arquivo 'discover.names'
+[07 Jun 2015 08:29:05,042] INFO  : -> Tempo de execucao: 21521 segundo(s) 
+[07 Jun 2015 08:29:05,044] INFO  :    - Quantidade lida:  28421   
+[07 Jun 2015 08:29:05,048] INFO  : Buscando sinonimos de sinonimos e associando ao hash de 'mapeamento do arquivo names'
+[07 Jun 2015 09:20:31,530] INFO  : ====== Inicio processamento: Sun Jun  7 09:20:31 2015  ===========  
+[07 Jun 2015 09:20:31,530] INFO  : Lendo arquivo 'discover.names'
+[07 Jun 2015 09:20:37,253] INFO  : -> Tempo de execucao: 6 segundo(s) 
+[07 Jun 2015 09:20:37,253] INFO  :    - Quantidade lida:  51   
+[07 Jun 2015 09:20:37,254] INFO  : Lendo arquivo 'discover.names'
