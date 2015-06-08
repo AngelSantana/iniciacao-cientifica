@@ -678,3 +678,6 @@
 [07 Jun 2015 10:12:57,315] INFO  : -> Tempo de execucao: 2875 segundo(s) 
 [07 Jun 2015 10:12:57,316] INFO  :    - Quantidade lida:  28421   
 [07 Jun 2015 10:12:57,322] INFO  : Mapeando arquivo 'discover.names'
+[07 Jun 2015 17:18:39,689] INFO  : -> Tempo de execucao: 25542 segundo(s) 
+[07 Jun 2015 17:18:39,689] INFO  :    - Quantidade lida:  28421   
+[07 Jun 2015 17:18:39,693] INFO  : Buscando sinonimos de sinonimos e associando ao hash de 'mapeamento do arquivo names'
