@@ -14,7 +14,7 @@ $MEU_DISCOVER_DATA = "meuDiscover.data";
 $MEU_DISCOVER_NAMES = "meuDiscover.names";
 $DISCOVER_NAMES = "discover.names";
 $DIRETORIO_DISCOVER = "C:/WordNet/";
-$MINIMOSINONIMOS = 10; # Ideia: Colocar um calculo para escolhe a quantidade adequada mínima para a lista de sinônimos
+$MINIMOSINONIMOS = 20; # Ideia: Colocar um calculo para escolhe a quantidade adequada mínima para a lista de sinônimos
 # perl trim function - remove leading and trailing whitespace
 
 # log.conf
